@@ -1,0 +1,164 @@
+name: 'Deployer'
+description: 'This is the default deploy action for a standard application service.'
+author: 'MH'
+inputs:
+  apmBaseUrl:
+    description: 'Elastic APM Base URL'
+    required: false
+  apmEnabled:
+    description: 'Elastic APM Enabled (defaults to false)'
+    default: 'false'
+    required: true
+  appName: 
+    description: 'Application name (defaults to repository name)'
+    required: true
+  appVersion:
+    description: 'Application version (defaults to branch name)'
+    required: false
+  argoBaseUrl:
+    description: 'Base Argo url'
+    required: true
+  argoEnabled:
+    description: 'ArgoCD Enabled (defaults to false)'
+    default: 'false'
+    required: true
+  argoAccessToken:
+    description: 'ArgoCD Access Token (defaults to false)'
+    default: ''
+    required: false
+  argoClientId:
+    description: 'ArgoCD Client ID'
+    default: ''
+    required: false
+  argoClientSecret:
+    description: 'ArgoCD Client Secret'
+    default: ''
+    required: false
+  argoNamespace:
+    description: 'ArgoCD Namespace'
+    default: ''
+    required: false
+  argoProject:
+    description: 'ArgoCD Namespace'
+    default: ''
+    required: false
+  cloudAccountId:
+    description: 'Application Cloud Account ID (e.g. AWS account ID)'
+    required: false
+  clusterUrl:
+    description: 'Kubernetes Cluster URL to deploy to'
+    required: false
+  deployPreviewsEnabled:
+    description: 'Enable deploy previews (defaults to true)'
+    default: 'true'
+    required: false
+  dockerRepository:
+    description: 'Docker repository deploy from'
+    required: true
+  domain:
+    description: 'Domain name to use for deployment (defaults to empty)'
+    required: false
+  gateway:
+    description: 'Ingress Gateway to use for this service '
+    required: false
+  githubEnabled:
+    description: 'GitHub enabled (defaults to false)'
+    default: 'false'
+    required: true
+  githubToken:
+    description: 'GitHub token'
+    required: true
+  grafanaApiKey:
+    description: 'Grafana API Key'
+    required: false
+  grafanaBaseUrl:
+    description: 'Grafana Base URL'
+    required: false
+  grafanaEnabled:
+    description: 'Grafana Deployment Annotations Enabled (defaults to false)'
+    default: 'false'
+    required: true
+  helmChartRepoUrl:
+    description: 'Default helm chart repository to use'
+    required: true
+  helmChartName:
+    description: 'Default helm chart to apply'
+    required: true
+  helmChartVersion:
+    description: 'Default helm chart version to use. See https://helm.sh/docs/topics/charts/ for information on versioning'
+    required: true
+  helmChartValuesFilePath:
+    description: 'YAML configuration file path for the chart that will be applied (relative path is fine). Will attempt to pull from this repo if file does not exist.'
+    required: true
+  jiraClientId:
+    description: 'JIRA Client ID'
+    required: false
+  jiraClientSecret:
+    description: 'JIRA Client Secret'
+    required: false
+  jiraEnabled:
+    description: 'JIRA Deployment Enabled (default to false)'
+    default: 'false'
+    required: true
+  jiraOrganization:
+    description: 'JIRA Organization ID'
+    required: false
+  jiraOrganizationProperty:
+    description: 'JIRA Organization Property (metadata added to deployments)'
+    required: false
+  kibanaBaseUrl:
+    description: 'Kibana Base URL'
+    required: false
+  kibanaEnabled:
+    description: 'Kibana Enabled (defaults to false)'
+    default: 'false'
+    required: true
+  kibanaIndex:
+    description: 'Kibana index to use'
+    required: false
+  path:
+    description: 'Base path to use to access the app (defaults to empty string)'
+    default: ''
+    required: false
+  sentryEnabled:
+    description: 'Sentry Releases Enabled (defaults to false)'
+    default: 'false'
+    required: false
+  sentryOrganization:
+    description: 'Sentry Organization'
+    required: false
+  sentryProjectId:
+    description: 'Sentry Project ID'
+    required: false
+  sentryProjectSlug:
+    description: 'Sentry Project Slug'
+    required: false
+  sentryToken:
+    description: 'Sentry API Token'
+    required: false
+  serviceAccountARN:
+    description: 'Service Account ARN'
+    required: false
+  subdomain:
+    description: 'Base subdomain to access the app'
+    required: true
+  vaultEnabled:
+    description: 'Vault Enabled (defaults to false)'
+    default: 'false'
+    required: true
+  vaultBaseUrl:
+    description: 'Vault Base URL'
+    required: false
+  vaultKeyPrefix:
+    description: 'Vault Key Prefix'
+    default: ''
+    required: false
+  vaultApiKey:
+    description: 'Vault API Key'
+    required: false
+outputs:
+  deploymentId:
+    description: 'GitHub deployment id'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
